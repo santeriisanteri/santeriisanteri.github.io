@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kimppakyyti</title>
+<style>
+label {
+	display: block;
+	width: 6em;
+	float: left;
+}
+</style>
+<!-- 
+Tee ohjelma, jolla mökille menijät voivat laskea kimppakyydin polttoainekustannukset. 
+Ohjelma kysyy ajetut kilometrit, auton kulutuksen per 100 km, bensan litrahinnan sekä 
+kimppakyytiläisten lukumäärän. Ohjelma laskee edellä kerrotuista tiedoista, 
+kuinka paljon jokainen maksaa bensasta. 
+Esimerkiksi jos ajetaan 500.0 kilometriä, kulutus on 7.0 litraa/100km, 
+polttoaine maksaa 1.690 euroa a/litra ja kimppakyytiläisiä on kolme, 
+jokainen maksaa 19.72 (500.0 * 7.0 / 100.0 * 1.690 /3). 
+kustannus = kulutus / 100.0 * litrahinta * kilometrit / maara;
+ -->
+</head>
+<body>
+	<h3>Kimppakyyti</h3>
+
+	<form>
+		<p>
+			<label>Kilometrit:</label> 
+			<input type="text" id="kilometrit" size="5">
+		</p>
+		<p>
+			<label>Kulutus:</label> 
+			<input type="text" id="kulutus" size="5">
+		</p>
+		<p>
+			<label>Litrahinta:</label> 
+			<input type="text" id="litrahinta" size="5">
+		</p>
+		<p>
+			<label>Määrä:</label> 
+			<input type="text" id="maara" size="5">
+		</p>
+		<p>
+			<input type="button" value="Laske" onclick="laskeBensat()">
+		</p>
+	</form>
+
+	<!-- Tänne kirjoitetaan vastaus JavaScriptillä -->
+	<p id="vastaus"></p>
+	 
+	<script>
+	function laskeBensat() {
+		let kilometrit = Number(document.getElementById("kilometrit").value);
+		let kulutus  = Number(document.getElementById("kulutus").value);
+		let litrahinta = Number(document.getElementById("litrahinta").value);
+		let maara =Number(document.getElementById("maara").value);
+
+		let kustannus = kulutus / 100.0 * litrahinta * kilometrit / maara;
+		document.getElementById("vastaus").innerHTML = "Polttoaine per henkilö on " +
+		kustannus.toFixed(2) + " euroa ";
+	}
+</script>
+</body>
+</html>
