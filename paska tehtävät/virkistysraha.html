@@ -24,13 +24,17 @@ Tee ohjelma, joka kertoo, miten virkistysrahan käyttö vähenee harrastuskertoj
 
 	<script>
 		function nayta() {
-			let hinta =Number(document.getElementById("hinta").value);
+			let hinta = Number(document.getElementById("hinta").value);
 			let virkistysraha = 100;
-			
-			while (virkistysraha >= 0)
-				virkistysraha = virkistysraha - hinta;
+			let teksti = "";
+			let i = 0;
 
-			document.getElementById("vastaus").innerHTML = virkistysraha;
+			while (virkistysraha >= hinta) {
+				virkistysraha = virkistysraha - hinta;
+				i++;
+				teksti += i + ". kerran jälkeen jäljellä on " + virkistysraha.toFixed(2) + " euroa <br>"; 
+			}
+			document.getElementById("vastaus").innerHTML = teksti;
 		} nayta();
 	</script>
 </body>
